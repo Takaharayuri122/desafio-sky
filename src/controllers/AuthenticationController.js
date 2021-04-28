@@ -8,6 +8,10 @@ const jwt = require('jsonwebtoken');
 const moment = require('moment');
 
 
+routes.get('/', async (request, response) => {
+  return response.json({ result: true });
+})
+
 
 routes.post('/sign_up', async (request, response) => {
   try {

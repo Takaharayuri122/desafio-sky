@@ -1,16 +1,9 @@
 /* eslint-disable no-undef */
 require('dotenv').config();
-const express = require('express');
-const app = express();
-const AuthenticationController = require('./src/controllers/AuthenticationController');
-
-app.use(express.json());
-app.use(express.urlencoded({
-  extended: false
-}));
+const app = require('./src/server');
 
 
-app.use('/', AuthenticationController);
+app.listen(process.env.PORT, () => {
+  console.log(`Server listening on address http://localhost:${process.env.PORT}`);
+});
 
-
-app.listen(process.env.PORT);
