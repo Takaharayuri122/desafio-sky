@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest --silent",
     "dev": "nodemon index.js",
+    "start": "node index.js",
     "test:watch": "jest --watch --silent",
     "deploy": "git push heroku master && heroku logs --tail"
   },
