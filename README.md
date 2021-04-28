@@ -17,9 +17,14 @@ Todas as respostas de erro devem retornar o objeto:
 ### Instalação e execução
 
 ```bash
+## Install
 $ npm i 
 
+## Start Server
 $ npm run dev
+
+## Run Tests
+$ npm run test
 
 ```
 
