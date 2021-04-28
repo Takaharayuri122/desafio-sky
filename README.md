@@ -63,6 +63,6 @@ Response Error **[500]**
 
 ```json
 {
-	mesangem: "_Detalhes do Erro_"
+	"mensagem": "_Detalhes do Erro_"
 }
 ```
