@@ -31,7 +31,6 @@ routes.post('/sign_up', async (request, response) => {
     }
 
   } catch (error) {
-    console.log(error);
     return response.status(500).json({
       mensagem: 'Ocurreu um erro ao criar o usuário',
     })
@@ -60,21 +59,21 @@ routes.post('/sign_in', async (request, response) => {
       }
       else {
         return response.status(401).json({
-          mensagem: 'Senha incorreta'
+          mensagem: 'Usuário e/ou senha inválidos'
         })
       }
     }
     else {
       return response.status(401).json({
-        mensagem: 'Não foi possível localizar este usuário'
+        mensagem: 'Usuário e/ou senha inválidos'
       })
     }
 
 
   } catch (error) {
-    console.log(error);
+
     return response.status(500).json({
-      mensagem: 'Ocurreu um erro ao criar o usuário',
+      mensagem: 'Ocorreu um erro ao processar sua requisição',
     })
   }
 })
@@ -94,7 +93,14 @@ routes.get('/search/:user_id', async (request, response) => {
         const minutes = duration.asMinutes();
         if (minutes < 30) {
           const query = await User.findById(request.params.user_id);
-          return response.status(200).json(query);
+          if (query) {
+            return response.status(200).json(query);
+          }
+          else {
+            return response.status(500).json({
+              mensagem: 'Usuário não encontrado'
+            })
+          }
         }
         else {
           return response.status(403).json({
